@@ -24,6 +24,15 @@ symlink() {
         ln -s $BASEDIR/$1 ~/.$1 ;
       fi
       ;;
+    # dwm-flexipatch/ to /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999
+    dwm-flexipatch)
+      if [ ! -d /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999 ]; then
+        echo "Symlinking $BASEDIR/$1 to /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999" ;
+        sudo ln -s $BASEDIR/$1 /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999 ;
+      else
+        echo -e "${YELLOW}/etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999 already exists. Skipping...${NC}" ;
+      fi
+      ;;
   esac
 }
 
