@@ -4,34 +4,58 @@ BASEDIR=$(pwd)
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# if -f or --force is passed, set FORCE to true
+if [ "$1" = "-f" ] || [ "$1" = "--force" ]; then
+  FORCE=true
+  shift
+fi
+
+symlink_with_destination() {
+  SOURCE=$1
+  DESTINATION=$2
+  SUDO=$3
+
+  if [ "$SUDO" = "true" ]; then
+    SUDO="sudo"
+  else
+    SUDO=""
+  fi
+
+  # if destination folder or file does not exist, create symlink
+  # if FORCE is true and file or folder exists, move it to .old and create symlink
+  # if FORCE is true and symlink exists, remove it and create symlink
+  if [ "$FORCE" = true ]; then
+    if [ -L "$DESTINATION" ]; then
+      $SUDO rm "$DESTINATION"
+      echo -e "${YELLOW}Removed $DESTINATION symlink${NC}"
+    fi
+    if [ -e "$DESTINATION" ]; then
+      $SUDO mv "$DESTINATION" "$DESTINATION.old"
+      echo -e "${YELLOW}Moved $DESTINATION to $DESTINATION.old${NC}"
+    fi
+  fi
+
+  if [ ! -e "$DESTINATION" ]; then
+    $SUDO ln -s "$SOURCE" "$DESTINATION"
+    echo -e "${NC}Created symlink: $DESTINATION${NC}"
+  else
+    echo -e "${YELLOW}File or folder already exists: $DESTINATION${NC}"
+  fi
+}
+
 symlink() {
   case $1 in
     # dirs to ~/.config
     nvim|kitty|ranger|neofetch)
-      if [ ! -d ~/.config/$1 ]; then
-        echo "Symlinking $BASEDIR/$1 to ~/.config/$1" ;
-        ln -s $BASEDIR/$1 ~/.config/$1 ;
-      else
-        echo -e "${YELLOW}~/.config/$1 already exists. Skipping...${NC}" ;
-      fi
+      symlink_with_destination "$BASEDIR/$1" "$HOME/.config/$1"
       ;;
     # files to ~ with dot
     tmux.conf)
-      if [ -e ~/.$1 ]; then
-        echo -e "${YELLOW}~/.$1 already exists. Skipping...${NC}" ;
-      else
-        echo "Symlinking $1 to ~/.$1" ;
-        ln -s $BASEDIR/$1 ~/.$1 ;
-      fi
+      symlink_with_destination "$BASEDIR/$1" "$HOME/.$1"
       ;;
     # dwm-flexipatch/ to /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999
     dwm-flexipatch)
-      if [ ! -d /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999 ]; then
-        echo "Symlinking $BASEDIR/$1 to /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999" ;
-        sudo ln -s $BASEDIR/$1 /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999 ;
-      else
-        echo -e "${YELLOW}/etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999 already exists. Skipping...${NC}" ;
-      fi
+      symlink_with_destination "$BASEDIR/$1" "/etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999" true
       ;;
   esac
 }
