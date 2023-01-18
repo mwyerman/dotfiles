@@ -7,7 +7,7 @@ NC='\033[0m' # No Color
 symlink() {
   case $1 in
     # dirs to ~/.config
-    nvim|kitty)
+    nvim|kitty|ranger|neofetch)
       if [ ! -d ~/.config/$1 ]; then
         echo "Symlinking $BASEDIR/$1 to ~/.config/$1" ;
         ln -s $BASEDIR/$1 ~/.config/$1 ;
@@ -27,6 +27,14 @@ symlink() {
   esac
 }
 
-for file in $@; do
-  symlink $file
-done
+# if arg is all, symlink all nonhidden files in basedir except this script and README
+if [ "$1" == "all" ]; then
+  for file in $(ls -A $BASEDIR | grep -vE "readme|symlink.sh"); do
+    symlink $file
+  done
+else
+  for file in $@; do
+    symlink $file
+  done
+fi
+
