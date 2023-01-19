@@ -25,9 +25,40 @@ alias gpl="git pull"
 alias gpf="git push --force"
 
 # log
-alias gl="git log --oneline --decorate --color --pretty=format:'%Cred%h%Creset - %Cgreen%ah%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an|%ae>%Creset'"
-alias gll="git log"
-alias gg="git log --oneline --decorate --graph --all --color --pretty=format:'%Cred%h%Creset - %Cgreen%ah%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an|%ae>%Creset'"
+function gl() {
+  if [ -z "$1" ]; then
+    NUMOPT="-n 10"
+  elif [ "$1" = "a" ] || [ "$1" = "all" ]; then
+    NUMOPT=""
+  else
+    NUMOPT="-n $1"
+  fi
+
+  git log --oneline --decorate --color --pretty=format:'%Cred%h%Creset - %Cgreen%ah%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an|%ae>%Creset' $NUMOPT
+}
+
+function gll() {
+  if [ -z "$1" ]; then
+    NUMOPT="-n 5"
+  elif [ "$1" = "a" ] || [ "$1" = "all" ]; then
+    NUMOPT=""
+  else
+    NUMOPT="-n $1"
+  fi
+  git log $NUMOPT
+}
+
+function gg() {
+  if [ -z "$1" ]; then
+    NUMOPT="-n 10"
+  elif [ "$1" = "a" ] || [ "$1" = "all" ]; then
+    NUMOPT=""
+  else
+    NUMOPT="-n $1"
+  fi
+  git log --oneline --decorate --graph --all --color --pretty=format:'%Cred%h%Creset - %Cgreen%ah%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an|%ae>%Creset' $NUMOPT
+}
+
 
 # config
 alias gcu="git config user.name '$GIT_NAME'"
