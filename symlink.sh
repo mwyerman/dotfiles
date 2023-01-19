@@ -2,6 +2,7 @@
 BASEDIR=$(pwd)
 
 YELLOW='\033[1;33m'
+RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # if -f or --force is passed, set FORCE to true
@@ -27,19 +28,21 @@ symlink_with_destination() {
   if [ "$FORCE" = true ]; then
     if [ -L "$DESTINATION" ]; then
       $SUDO rm "$DESTINATION"
-      echo -e "${YELLOW}Removed $DESTINATION symlink${NC}"
+      echo -e "${RED}(FORCED)${YELLOW} Removed symlink: $DESTINATION${NC}"
     fi
     if [ -e "$DESTINATION" ]; then
       $SUDO mv "$DESTINATION" "$DESTINATION.old"
-      echo -e "${YELLOW}Moved $DESTINATION to $DESTINATION.old${NC}"
+      echo -e "${RED}(FORCED)${YELLOW} Moved $DESTINATION to $DESTINATION.old${NC}"
     fi
   fi
 
-  if [ ! -e "$DESTINATION" ]; then
+  if [ -L "$DESTINATION" ]; then
+    echo -e "${YELLOW}Symlink already exists: $DESTINATION ${NC}"
+  elif [ -e "$DESTINATION" ]; then
+    echo -e "${YELLOW}File or folder already exists: $DESTINATION${NC}"
+  else
     $SUDO ln -s "$SOURCE" "$DESTINATION"
     echo -e "${NC}Created symlink: $DESTINATION${NC}"
-  else
-    echo -e "${YELLOW}File or folder already exists: $DESTINATION${NC}"
   fi
 }
 
@@ -56,6 +59,11 @@ symlink() {
     # dwm-flexipatch/ to /etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999
     dwm-flexipatch)
       symlink_with_destination "$BASEDIR/$1" "/etc/portage/savedconfig/x11-wm/dwm-flexipatch-9999" true
+      ;;
+    # zshrc to ~/.zshrc and zsh/ to ~/.zsh (either will create both symlinks)
+    zshrc|zsh)
+      symlink_with_destination "$BASEDIR/zshrc" "$HOME/.zshrc"
+      symlink_with_destination "$BASEDIR/zsh" "$HOME/.zsh"
       ;;
   esac
 }
