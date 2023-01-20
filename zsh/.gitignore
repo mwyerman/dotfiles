@@ -1,4 +1,5 @@
 zim/
+.zcompcache/
 .zhistory
 .zcompdump*
 secrets.zsh
