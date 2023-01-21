@@ -22,17 +22,17 @@ return {
 
       ["pylsp"] = function()
         lspconfig["pylsp"].setup(
-          require("lsp.settings.pylsp")
+          require("plugins.lsp.pylsp")
         )
       end,
       ["sumneko_lua"] = function()
         lspconfig["sumneko_lua"].setup(
-          require("lsp.settings.sumneko_lua")
+          require("plugins.lsp.sumneko_lua")
         )
       end,
       ["clangd"] = function()
         lspconfig["clangd"].setup(
-          require("lsp.settings.clangd")
+          require("plugins.lsp.clangd")
         )
       end,
 

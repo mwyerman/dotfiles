@@ -23,5 +23,4 @@ require("lazy").setup("plugins", {
 
 vim.cmd("colorscheme catppuccin")
 
-require 'lsp.handlers'
 require 'autocommands'

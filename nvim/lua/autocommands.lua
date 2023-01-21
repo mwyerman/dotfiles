@@ -44,3 +44,11 @@ vim.cmd [[
     autocmd!
     autocmd BufEnter *.{c,h,cpp,hpp} setlocal commentstring=//\ %s
 ]]
+
+-- autoformat on save
+vim.cmd [[
+  augroup _autoformat
+    autocmd!
+    autocmd BufWritePre * lua vim.lsp.buf.format({async = false})
+  augroup end
+]]
