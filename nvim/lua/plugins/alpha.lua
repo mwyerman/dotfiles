@@ -1,9 +1,5 @@
 return {
   "goolord/alpha-nvim",
-  keys = {
-    { "<leader>a", "<cmd>Alpha<cr>", desc = "alpha" },
-  },
-  lazy = false,
   config = function()
     local dashboard = require("alpha.themes.dashboard")
     dashboard.section.header.val = {
@@ -19,7 +15,7 @@ return {
       dashboard.button("F", "  find text", ":Telescope live_grep <CR>"),
       dashboard.button("e", "  new file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("p", "  find project", ":Telescope projects <CR>"),
-      dashboard.button("g", "  git", ":Neogit <CR>"),
+      dashboard.button("g", "  git", ":Neogit<CR>"),
       dashboard.button("r", "  recently used files", ":Telescope oldfiles <CR>"),
       dashboard.button("c", "  configuration", ":e ~/.config/nvim/init.lua <CR>"),
       dashboard.button("q", "  quit neovim", ":qa<CR>"),

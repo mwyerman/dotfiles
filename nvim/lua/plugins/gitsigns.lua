@@ -1,13 +1,5 @@
 return {
   "lewis6991/gitsigns.nvim",
-  keys = {
-    { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "next hunk" },
-    { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "prev hunk" },
-    { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "blame" },
-    { "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", desc = "stage hunk" },
-    { "<leader>gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", desc = "undo stage hunk" },
-  },
-  lazy = false,
   opts = {
     signs = {
       add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
@@ -17,6 +9,7 @@ return {
       changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
     },
     signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+    -- test hunk
     numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
     linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
     word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -35,6 +28,7 @@ return {
     current_line_blame_formatter_opts = {
       relative_time = false,
     },
+    -- another test hunk
     sign_priority = 6,
     update_debounce = 100,
     status_formatter = nil, -- Use default

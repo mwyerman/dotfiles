@@ -31,7 +31,6 @@ return {
       p = { "<cmd>Lazy<cr>", "lazy" },
 
       -- folders
-      g = { name = "+git" },
       l = { name = "+lsp" },
       T = { name = "+terminal" },
     }

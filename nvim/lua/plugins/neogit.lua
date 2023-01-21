@@ -1,7 +1,7 @@
 return {
   "TimUntersberger/neogit",
-  keys = {
-    {"<leader>gg", ":Neogit<CR>", mode = "n", desc = "neogit"},
+  cmd = {
+    "Neogit",
   },
   opts = {
     disable_signs = false,
