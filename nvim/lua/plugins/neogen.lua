@@ -1,7 +1,7 @@
 return {
   "danymat/neogen",
   keys = {
-    { "<leader>d", "<cmd>lua require('neogen').generate()<CR>", mode = "n", desc = "generate docstring" },
+    { "<leader>D", "<cmd>lua require('neogen').generate()<CR>", mode = "n", desc = "generate docstring" },
   },
   opts = {
     enabled = true,
