@@ -6,4 +6,3 @@ fi
 source $ZDOTDIR/git.zsh
 source $ZDOTDIR/path.zsh
 source $ZDOTDIR/misc.zsh
-
