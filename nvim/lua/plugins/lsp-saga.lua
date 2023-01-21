@@ -1,5 +1,6 @@
 return {
   "glepnir/lspsaga.nvim",
+  enabled = false,
   keys = {
     { "<leader>l.", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "next diagnostic" },
     { "<leader>l,", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "prev diagnostic" },
