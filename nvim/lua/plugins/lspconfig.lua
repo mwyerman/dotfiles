@@ -26,6 +26,7 @@ return {
   keys = {
     { "<leader>li", "<cmd>LspInfo<cr>", desc = "lsp info" },
     { "<leader>lf", "<cmd>lua vim.lsp.buf.format({async = false})<cr>", desc = "lsp info" },
+    { "gl", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "show diagnostic" },
   },
   lazy = false,
   config = function()
