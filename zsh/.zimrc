@@ -55,4 +55,7 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim install
 
+# Add k command - ls with color and git status
+zmodule supercrabtree/k
+
 zprompt_theme='pure'

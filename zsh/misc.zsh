@@ -1,6 +1,6 @@
 # ls aliases
 alias la="ls -lAFh"
-alias ll="ls -lFh"
+alias ll="k -h"
 alias lt="ls -lFht"
 alias lsr="ls -lAFhR"
 
