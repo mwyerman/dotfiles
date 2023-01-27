@@ -1,14 +1,23 @@
 alias g="git"
 
+# delta pager should always be side-by-side
+alias delta="delta -s"
+
 # status and diff
 alias gs="git status"
 alias gd="git diff"
+alias gdd="git diff | delta"
+
 alias gdc="git diff --cached"
+
 alias gds="git diff --staged"
+alias gdds="git diff --staged | delta"
 
 # branches
 alias gb="git branch"
 alias gbl="git branch -a"
+alias gbd="git branch -d"
+alias gbD="git branch -D"
 
 # commits
 alias ga="git add"
