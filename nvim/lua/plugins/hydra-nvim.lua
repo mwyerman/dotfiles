@@ -22,7 +22,6 @@ local function git_submode()
       on_enter = function()
         if vim.cmd 'mkview' then
           vim.cmd 'silent! %foldopen'
-          vim.bo.modifiable = false
           gitsigns.toggle_linehl(true)
         end
       end,
@@ -61,8 +60,12 @@ local function git_submode()
       { "d", gitsigns.toggle_deleted, desc = "toggle_deleted" },
       { "b", gitsigns.blame_line, desc = "blame line" },
       { "B", function() gitsigns.blame_line { full = true } end, desc = "blame line (full)" },
-      { "r", gitsigns.reset_hunk, desc = "reset hunk" },
-      { "R", gitsigns.reset_buffer, desc = "reset buffer" },
+      { "r", function()
+        gitsigns.reset_hunk()
+      end, desc = "reset hunk" },
+      { "R", function()
+        gitsigns.reset_buffer()
+      end, desc = "reset buffer" },
       { "/", gitsigns.show, { exit = true }, desc = "show base file" },
       { "<Enter>", "<cmd>Neogit<CR>", { exit = true, desc = "open neogit" } },
       { "q", nil, { exit = true, nowait = true, desc = "quit" } },
