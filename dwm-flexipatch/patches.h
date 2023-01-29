@@ -377,7 +377,7 @@
  * toggled. Increasing or decreasing gaps during runtime will not affect the bar
  * padding.
  */
-#define BAR_PADDING_VANITYGAPS_PATCH 0
+#define BAR_PADDING_VANITYGAPS_PATCH 1
 
 /* This patch adds simple markup for status messages using pango markup.
  * This depends on the pango library v1.44 or greater.
