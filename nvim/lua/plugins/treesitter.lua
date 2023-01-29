@@ -14,7 +14,7 @@ return {
         enable = true,
       },
       highlight = {
-        enable = false,
+        enable = true,
         disable = { "" }, -- languages to disable
         additional_vim_regex_highlighting = false,
       },
