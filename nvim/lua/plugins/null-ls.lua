@@ -15,8 +15,10 @@ return {
       debug = false,
       sources = {
         formatting.prettier.with { extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } },
+        formatting.black,
+        formatting.isort,
         diagnostics.flake8,
-        diagnostics.mypy,
+        -- diagnostics.mypy,
       },
     }
   end

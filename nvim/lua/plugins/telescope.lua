@@ -17,6 +17,7 @@ return {
     { "<leader>Sh", ":Telescope help_tags<cr>", desc = "help tags" },
     { "<leader>Sk", ":Telescope keymaps<cr>", desc = "keymaps" },
     { "<leader>SC", ":Telescope commands<cr>", desc = "commands" },
+    { "<leader> ", ":Telescope resume<cr>", desc = "resume" },
   },
   lazy = false,
   config = function()

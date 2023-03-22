@@ -1,7 +1,7 @@
 return {
   "echasnovski/mini.nvim",
   config = function()
-    require("mini.animate").setup()
+    -- require("mini.animate").setup()
     require("mini.bufremove").setup()
     require("mini.comment").setup()
     require("mini.indentscope").setup()
@@ -14,6 +14,7 @@ return {
         down = "<S-j>",
       }
     })
+    require("mini.ai").setup()
     require("mini.pairs").setup()
   end
 }
