@@ -19,15 +19,14 @@ return {
       function(server_name)
         lspconfig[server_name].setup({})
       end,
-
       ["pylsp"] = function()
         lspconfig["pylsp"].setup(
           require("plugins.lsp.pylsp")
         )
       end,
-      ["sumneko_lua"] = function()
-        lspconfig["sumneko_lua"].setup(
-          require("plugins.lsp.sumneko_lua")
+      ["lua_ls"] = function()
+        lspconfig["lua_ls"].setup(
+          require("plugins.lsp.lua_ls")
         )
       end,
       ["clangd"] = function()
@@ -35,7 +34,6 @@ return {
           require("plugins.lsp.clangd")
         )
       end,
-
     })
   end,
 }
