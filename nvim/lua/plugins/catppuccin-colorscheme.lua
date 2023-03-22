@@ -6,7 +6,7 @@ return {
   config = function()
     vim.opt.termguicolors = true
     require("catppuccin").setup({
-      colorscheme = "mocha",
+      flavour = "mocha",
       integrations = {
         cmp = true,
         lsp_saga = true,
@@ -26,7 +26,10 @@ return {
         }
       end
     })
+
     local colors = require("catppuccin.palettes").get_palette()
     vim.api.nvim_set_hl(0, 'TabLineSel', { fg = colors.base, bg = colors.red })
+
+    vim.cmd.colorscheme "catppuccin"
   end
 }
