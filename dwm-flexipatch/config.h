@@ -210,14 +210,16 @@ static char c000000[] = "#000000"; // placeholder value
 #define MANTLE_HEX "#181825"
 #define CRUST_HEX "#11111b"
 
+#define FG_COLOR_HEX RED_HEX
+
 static char normfgcolor[] = TEXT_HEX;
 static char normbgcolor[] = BASE_HEX;
 static char normbordercolor[] = BASE_HEX;
 static char normfloatcolor[] = RED_HEX;
 
-static char selfgcolor[] = GREEN_HEX;
+static char selfgcolor[] = FG_COLOR_HEX;
 static char selbgcolor[] = BASE_HEX;
-static char selbordercolor[] = GREEN_HEX;
+static char selbordercolor[] = FG_COLOR_HEX;
 static char selfloatcolor[] = RED_HEX;
 
 static char titlenormfgcolor[] = TEXT_HEX;
@@ -225,7 +227,7 @@ static char titlenormbgcolor[] = SURFACE1_HEX;
 static char titlenormbordercolor[] = BASE_HEX;
 static char titlenormfloatcolor[] = RED_HEX;
 
-static char titleselfgcolor[] = GREEN_HEX;
+static char titleselfgcolor[] = FG_COLOR_HEX;
 static char titleselbgcolor[] = SURFACE0_HEX;
 static char titleselbordercolor[] = BASE_HEX;
 static char titleselfloatcolor[] = RED_HEX;
@@ -235,7 +237,7 @@ static char tagsnormbgcolor[] = BASE_HEX;
 static char tagsnormbordercolor[] = BASE_HEX;
 static char tagsnormfloatcolor[] = RED_HEX;
 
-static char tagsselfgcolor[] = GREEN_HEX;
+static char tagsselfgcolor[] = FG_COLOR_HEX;
 static char tagsselbgcolor[] = BASE_HEX;
 static char tagsselbordercolor[] = BASE_HEX;
 static char tagsselfloatcolor[] = RED_HEX;

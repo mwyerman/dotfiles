@@ -1,0 +1,22 @@
+# image previews
+set preview_images true
+set preview_images_method kitty
+
+# random useful settings
+set show_hidden true
+set confirm_on_delete always
+set automatically_count_files true
+
+# git
+set vcs_aware true
+set vcs_backend_git enabled
+set vcs_backend_hg disabled
+set vcs_backend_bzr disabled
+
+set show_hidden_bookmarks true
+
+set preview_files true
+set collapse_preview true
+
+set mouse_enabled true
+
