@@ -33,6 +33,11 @@ alias gp="git push"
 alias gpl="git pull"
 alias gpf="git push --force"
 
+# fetch
+alias gf="git fetch"
+alias gfa="git fetch --all"
+alias gfp="git fetch --prune --all"
+
 # log
 function gl() {
   if [ -z "$1" ]; then
