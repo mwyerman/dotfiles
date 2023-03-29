@@ -1,5 +1,9 @@
 return {
   "echasnovski/mini.nvim",
+  lazy = false,
+  keys = {
+    { "<leader>c", "<cmd>lua MiniBufremove.delete()<cr>", "close file" },
+  },
   config = function()
     -- require("mini.animate").setup()
     require("mini.bufremove").setup()
