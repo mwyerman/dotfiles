@@ -1,11 +1,10 @@
 return {
   "echasnovski/mini.nvim",
-  lazy = false,
+  event = "BufRead",
   keys = {
-    { "<leader>c", "<cmd>lua MiniBufremove.delete()<cr>", "close file" },
+    { "<leader>x", "<cmd>lua MiniBufremove.delete()<cr>", "close file" },
   },
   config = function()
-    -- require("mini.animate").setup()
     require("mini.bufremove").setup()
     require("mini.comment").setup()
     require("mini.indentscope").setup()

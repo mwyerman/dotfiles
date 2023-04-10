@@ -1,5 +1,6 @@
 return {
   "akinsho/bufferline.nvim",
+  event = "BufRead",
   config = function()
     local colors = require("catppuccin.palettes").get_palette()
 
@@ -34,7 +35,6 @@ return {
         indicator = {
           style = "underline",
         },
-
         -- icons
         separator_style = { "", "" },
         modified_icon = "●",
@@ -44,19 +44,16 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
         show_tab_indicators = true,
-
         -- sizes
-        max_name_length = 18,
-        max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-        tab_size = 18,
-
+        max_name_length = 30,
+        max_prefix_length = 27, -- prefix used when a buffer is de-duplicated
+        tab_size = 30,
         -- diagnostics
         diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = false,
         diagnostics_indicator = function(count, _, _, _) -- args are (count, level, diagnostics_dict, context)
           return "(" .. count .. ")"
         end,
-
         offsets = { { filetype = "NvimTree", text = "File Explorer" } },
       },
       highlights = {
@@ -69,32 +66,27 @@ return {
         buffer_visible = text_inactive,
         buffer_selected = text_active,
         background = text_inactive, -- covors inactive buffers for some reason
-
         numbers = text_inactive,
         numbers_selected = text_active,
         numbers_visible = text_inactive,
-
         warning = text_inactive,
         warning_selected = warning,
         warning_visible = text_inactive,
         warning_diagnostic = warning,
         warning_diagnostic_selected = warning,
         warning_diagnostic_visible = warning,
-
         error = text_inactive,
         error_selected = err,
         error_visible = text_inactive,
         error_diagnostic = err,
         error_diagnostic_selected = err,
         error_diagnostic_visible = err,
-
         info = text_inactive,
         info_selected = warning,
         info_visible = text_inactive,
         info_diagnostic = warning,
         info_diagnostic_selected = warning,
         info_diagnostic_visible = warning,
-
         hint = text_inactive,
         hint_selected = warning,
         hint_visible = text_inactive,

@@ -12,6 +12,7 @@ return {
     "L3MON4D3/LuaSnip",                    -- snippet engine
     "rafamadriz/friendly-snippets",        -- additional snippets
   },
+  event = "InsertEnter",
   config = function()
     local cmp_status_ok, cmp = pcall(require, "cmp")
     if not cmp_status_ok then

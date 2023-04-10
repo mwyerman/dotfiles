@@ -1,9 +1,12 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate", -- update treesitter automatically
+  build = ":TSUpdate",                             -- update treesitter automatically
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring", -- comment.nvim treesitter support
+    "m-demare/hlargs.nvim",                        -- highlight function arguments
   },
+  cmd = { "TSInstall", "TSUpdate", "TSUninstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+  event = "BufRead",
   config = function()
     require("nvim-treesitter.configs").setup {
       ensure_installed = { "bash", "c", "cpp", "css", "dockerfile", "go", "html", "java", "javascript", "jsdoc", "json",

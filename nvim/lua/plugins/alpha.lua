@@ -1,5 +1,7 @@
 return {
   "goolord/alpha-nvim",
+  cmd = "Alpha",
+  event = "BufWinEnter",
   config = function()
     local dashboard = require("alpha.themes.dashboard")
     dashboard.section.header.val = {

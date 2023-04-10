@@ -33,10 +33,9 @@ return {
     { "K",          "<cmd>lua vim.lsp.buf.hover()<cr>",                 desc = "hover" },
     { "gj",         "<cmd>lua vim.diagnostic.goto_next()<cr>",          desc = "next diagnostic" },
     { "gk",         "<cmd>lua vim.diagnostic.goto_prev()<cr>",          desc = "prev diagnostic" },
-
-
   },
-  lazy = false,
+  -- lazy = false,
+  event = "BufReadPre",
   config = function()
     set_diagnostic_signs()
     set_diagnostic_config()

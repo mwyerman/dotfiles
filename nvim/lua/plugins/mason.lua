@@ -3,7 +3,10 @@ return {
   keys = {
     { "<leader>lI", "<cmd>Mason<cr>", desc = "mason installer" }
   },
-  lazy = false,
+  cmd = {
+    "Mason", "MasonInstall", "MasonUpdate", "MasonUninstall", "MasonInstallAll",
+    "MasonUpdateAll", "MasonUninstallAll", "MasonLog" },
+  event = "BufReadPre",
   dependencies = {
     "neovim/nvim-lspconfig",
     "williamboman/mason-lspconfig.nvim",
@@ -22,6 +25,11 @@ return {
       ["pylsp"] = function()
         lspconfig["pylsp"].setup(
           require("plugins.lsp.pylsp")
+        )
+      end,
+      ["pyright"] = function()
+        lspconfig["pyright"].setup(
+          require("plugins.lsp.pyright")
         )
       end,
       ["lua_ls"] = function()
