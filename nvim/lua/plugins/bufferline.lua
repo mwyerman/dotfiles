@@ -1,6 +1,6 @@
 return {
   "akinsho/bufferline.nvim",
-  event = "BufRead",
+  event = { "BufRead", "BufNewFile" },
   config = function()
     local colors = require("catppuccin.palettes").get_palette()
 
