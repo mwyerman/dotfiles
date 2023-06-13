@@ -1,4 +1,4 @@
-ZDOTDIR=${ZDOTDIR:-${HOME}/.zsh}
+ZDOTDIR=${HOME}/.zsh
 source $ZDOTDIR/init.zsh
 if [ -e $ZDOTDIR/secrets.zsh ]; then
   source $ZDOTDIR/secrets.zsh

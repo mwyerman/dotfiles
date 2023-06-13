@@ -19,6 +19,22 @@ alias gbl="git branch -a"
 alias gbd="git branch -d"
 alias gbD="git branch -D"
 
+function gbp() {
+  if git fetch --prune && git branch -vv | grep ': gone]' >/dev/null; then
+    git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d
+  else
+    echo "No local branches to delete."
+  fi
+}
+
+function gbP() {
+  if git fetch --prune && git branch -vv | grep ': gone]' >/dev/null; then
+    git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+  else
+    echo "No local branches to delete."
+  fi
+}
+
 # commits
 alias ga="git add"
 alias g.="git add ."
