@@ -28,7 +28,12 @@
 }
 
 /* Linux/GTK specific styles */
-@media (-moz-platform: linux) {
+@media (-moz-gtk-csd-available) {
+    .browser-toolbar:not(.titlebar-color){ /* Fixes wrong coloring applied with --toolbar-bgcolor by Firefox (#101) */
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
     #TabsToolbar:not([customizing="true"]) {
         visibility: collapse !important;
     }
@@ -132,7 +137,8 @@
 }
 
 /* Windows specific styles */
-@media (-moz-platform: windows-win10) {
+@media (-moz-platform: windows),
+       (-moz-platform: windows-win10) {
     /* Hide main tabs toolbar */
     :root[tabsintitlebar]{
         --uc-window-control-width: 137px; /* Space at the right of nav-bar for window controls */
@@ -186,7 +192,7 @@
         visibility: hidden !important;
     }
     /* Line up the Windows controls with the rest of the icons in the toolbar. */
-    .titlebar-buttonbox-container {
+    :root:not([sizemode="maximized"]) .titlebar-buttonbox-container {
         margin-top: 3px;
     }
 
@@ -262,6 +268,7 @@
 
 [sidebarcommand*="tabcenter"] #sidebar,
 #sidebar-box[sidebarcommand*="tabcenter"] {
+    display: block !important;
     min-width: 48px !important;
     max-width: 48px !important;
     width: 48px;
@@ -352,4 +359,3 @@
         display: none !important;
     }
 }
-
