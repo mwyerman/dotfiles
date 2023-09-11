@@ -3,6 +3,7 @@ return {
   name = "catppuccin",
   priority = 1000,
   lazy = false,
+  cond = not vim.g.vscode,
   config = function()
     vim.opt.termguicolors = true
     require("catppuccin").setup({

@@ -1,5 +1,6 @@
 return {
   "folke/which-key.nvim",
+  cond = not vim.g.vscode,
   config = function()
     local opts = {
       mode = "n",     -- NORMAL mode

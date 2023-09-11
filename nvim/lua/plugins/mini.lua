@@ -5,9 +5,7 @@ return {
     { "<leader>x", "<cmd>lua MiniBufremove.delete()<cr>", "close file" },
   },
   config = function()
-    require("mini.bufremove").setup()
     require("mini.comment").setup()
-    require("mini.indentscope").setup()
     require("mini.jump").setup()
     require("mini.move").setup({
       mappings = {
@@ -19,5 +17,10 @@ return {
     })
     require("mini.ai").setup()
     require("mini.pairs").setup()
+
+    if not vim.g.vscode then
+      require("mini.bufremove").setup()
+      require("mini.indentscope").setup()
+    end
   end
 }

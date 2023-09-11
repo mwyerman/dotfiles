@@ -5,6 +5,7 @@ return {
     "<A-v>",
     "<A-i>",
   },
+  cond = not vim.g.vscode,
   config = function()
     require("nvterm").setup({
       terminals = {

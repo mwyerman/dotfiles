@@ -2,6 +2,7 @@ return {
   "lewis6991/gitsigns.nvim",
   ft = "gitcommit",
   event = "BufRead",
+  cond = not vim.g.vscode,
   opts = {
     signs = {
       add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },

@@ -7,6 +7,7 @@ return {
   },
   cmd = { "TSInstall", "TSUpdate", "TSUninstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
   event = "BufRead",
+  cond = not vim.g.vscode,
   config = function()
     require("nvim-treesitter.configs").setup {
       ensure_installed = { "bash", "c", "cpp", "css", "dockerfile", "go", "html", "java", "javascript", "jsdoc", "json",

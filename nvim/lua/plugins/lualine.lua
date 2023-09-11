@@ -1,6 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "BufRead",
+  cond = not vim.g.vscode,
   config = function()
     local hide_in_width = function()
       return vim.fn.winwidth(0) > 80
@@ -61,6 +62,12 @@ return {
       return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
     end
 
+    local auto_session_okay, auto_session = pcall(require, "auto-session")
+    local auto_session_section = {}
+    if auto_session_okay then
+      auto_session_section = { auto_session.session_name }
+    end
+
     require("lualine").setup({
       options = {
         icons_enabled = true,
@@ -73,7 +80,7 @@ return {
       sections = {
         lualine_a = { branch, diagnostics },
         lualine_b = { mode },
-        lualine_c = {},
+        lualine_c = auto_session_section,
         -- lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_x = { diff, spaces, "encoding", filetype },
         lualine_y = { location },

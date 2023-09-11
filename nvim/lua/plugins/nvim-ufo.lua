@@ -9,6 +9,7 @@ return {
     "kevinhwang91/promise-async",
     "nvim-treesitter/nvim-treesitter",
   },
+  cond = not vim.g.vscode,
   config = function()
     vim.o.foldcolumn = "1"
     vim.o.foldlevel = 99

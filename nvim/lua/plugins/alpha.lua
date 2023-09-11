@@ -2,6 +2,7 @@ return {
   "goolord/alpha-nvim",
   cmd = "Alpha",
   event = "BufWinEnter",
+  cond = not vim.g.vscode,
   config = function()
     local dashboard = require("alpha.themes.dashboard")
     dashboard.section.header.val = {
@@ -13,10 +14,10 @@ return {
       [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
     }
     dashboard.section.buttons.val = {
+      dashboard.button("s", "  find session", ":Telescope session-lens search_session <CR>"),
       dashboard.button("f", "  find file", ":Telescope find_files <CR>"),
       dashboard.button("F", "  find text", ":Telescope live_grep <CR>"),
       dashboard.button("e", "  new file", ":ene <BAR> startinsert <CR>"),
-      dashboard.button("p", "  find project", ":Telescope projects <CR>"),
       dashboard.button("g", "  git", ":Neogit<CR>"),
       dashboard.button("r", "  recently used files", ":Telescope oldfiles <CR>"),
       dashboard.button("c", "  configuration", ":e ~/.config/nvim/init.lua <CR>"),

@@ -3,95 +3,48 @@ return {
   keys = {
     { "<leader>e", "<cmd>NvimTreeToggle<cr>", mode = "n", desc = "toggle file explorer" },
   },
+  cond = not vim.g.vscode,
   config = function()
-    local tree_cb = require("nvim-tree.config").nvim_tree_callback
+    local function on_attach(bufnr)
+      local api = require("nvim-tree.api")
+
+      local function opts(desc)
+        return {
+          desc = "nvim-tree: " .. desc,
+          buffer = bufnr,
+          noremap = true,
+          silent = true,
+          nowait = true,
+        }
+      end
+
+      -- set up defaults
+      api.config.mappings.default_on_attach(bufnr)
+
+      -- add custom mappings
+      vim.keymap.set("n", "l", api.node.open.edit, opts("edit"))
+      vim.keymap.set("n", "L", api.tree.change_root_to_node, opts("change root"))
+      vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("collapse"))
+      vim.keymap.set("n", "H", api.tree.change_root_to_parent, opts("change root to parent"))
+      vim.keymap.set("v", "v", api.node.open.vertical, opts("vsplit"))
+    end
+
+
+
+
+
 
     require("nvim-tree").setup {
-      disable_netrw = true,
-      hijack_netrw = true,
-      open_on_setup = false,
-      ignore_ft_on_setup = {
-        "startify",
-        "dashboard",
-        "alpha",
-      },
-      open_on_tab = false,
-      hijack_cursor = false,
-      update_cwd = true,
-      diagnostics = {
-        enable = true,
-        icons = {
-          hint = "",
-          info = "",
-          warning = "",
-          error = "",
-        },
-      },
-      update_focused_file = {
-        enable = true,
-        update_cwd = true,
-        ignore_list = {},
-      },
-      git = {
-        enable = true,
-        ignore = false,
-        timeout = 500,
-      },
+      on_attach = on_attach,
       view = {
         width = 40,
-        hide_root_folder = false,
-        side = "left",
-        mappings = {
-          custom_only = false,
-          list = {
-            { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-            { key = "h", cb = tree_cb "close_node" },
-            { key = "v", cb = tree_cb "vsplit" },
-          },
-        },
-        number = false,
-        relativenumber = false,
-      },
-      actions = {
-        open_file = {
-          quit_on_open = false,
-          window_picker = {
-            enable = true,
-          },
-        },
       },
       renderer = {
-        root_folder_modifier = ":t",
-        highlight_git = true,
-        icons = {
-          show = {
-            git = true,
-            folder = true,
-            file = true,
-            folder_arrow = true,
-          },
-          glyphs = {
-            default = "",
-            symlink = "",
-            git = {
-              unstaged = "",
-              staged = "S",
-              unmerged = "",
-              renamed = "➜",
-              deleted = "",
-              untracked = "U",
-              ignored = "◌",
-            },
-            folder = {
-              default = "",
-              open = "",
-              empty = "",
-              empty_open = "",
-              symlink = "",
-            },
-          },
-        },
+        group_empty = true,
       },
+      filters = {
+        git_ignored = false,
+      }
     }
   end
 }

@@ -24,6 +24,7 @@ return {
     },
     "nvim-telescope/telescope-ui-select.nvim",
   },
+  cond = not vim.g.vscode,
   config = function()
     local actions = require("telescope.actions")
 

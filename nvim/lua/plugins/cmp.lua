@@ -13,6 +13,7 @@ return {
     "rafamadriz/friendly-snippets",        -- additional snippets
   },
   event = "InsertEnter",
+  cond = not vim.g.vscode,
   config = function()
     local cmp_status_ok, cmp = pcall(require, "cmp")
     if not cmp_status_ok then

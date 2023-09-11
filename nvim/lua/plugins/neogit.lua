@@ -10,6 +10,7 @@ return {
     "nvim-lua/plenary.nvim",
     "sindrets/diffview.nvim",
   },
+  cond = not vim.g.vscode,
   opts = {
     disable_signs = false,
     disable_hint = false,

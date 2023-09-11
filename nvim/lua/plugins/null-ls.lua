@@ -4,6 +4,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   event = "BufReadPre",
+  cond = not vim.g.vscode,
   config = function()
     local null_ls = require("null-ls")
 

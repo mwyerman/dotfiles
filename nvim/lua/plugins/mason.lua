@@ -12,6 +12,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "jose-elias-alvarez/null-ls.nvim",
   },
+  cond = not vim.g.vscode,
   config = function()
     local lspconfig = require("lspconfig")
 
