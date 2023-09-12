@@ -3,7 +3,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  enabled = false,
+  enabled = true,
   event = "BufReadPre",
   cond = not vim.g.vscode,
   config = function()
