@@ -21,7 +21,6 @@ return {
         formatting.black,
         formatting.isort,
         diagnostics.flake8,
-        -- diagnostics.mypy,
       },
     }
   end
