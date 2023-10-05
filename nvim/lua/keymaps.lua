@@ -26,6 +26,30 @@ if not vim.g.vscode then
   -- navigate buffers
   keymap("n", "<S-l>", ":bnext<cr>", opts)
   keymap("n", "<S-h>", ":bprevious<cr>", opts)
+
+  -- netrw file explorer
+  keymap("n", "<leader>E", ":Explore<cr>", opts)
+  keymap("n", "<leader>e", ":Lexplore<cr>", opts)
+
+  -- improve netrw mappings
+  vim.api.nvim_create_autocmd('filetype', {
+    pattern = 'netrw',
+    desc = 'Better mappings for netrw',
+    callback = function()
+      local bind = function(lhs, rhs)
+        vim.keymap.set('n', lhs, rhs, { remap = true, buffer = true })
+      end
+
+      bind('n', '%') -- edit new file
+      bind('r', 'R') -- rename file
+
+      -- split navigation
+      bind('<C-h>', '<C-w>h')
+      bind('<C-j>', '<C-w>j')
+      bind('<C-k>', '<C-w>k')
+      bind('<C-l>', '<C-w>l')
+    end
+  })
 end
 
 -- Visual Mode

@@ -51,9 +51,9 @@ local function temp(client)
 end
 
 -- autoformat on save
-vim.cmd [[
-  augroup _autoformat
-    autocmd!
-    autocmd BufWritePre * lua vim.lsp.buf.format({async = false, filter = temp})
-  augroup end
-]]
+-- vim.cmd [[
+--   augroup _autoformat
+--     autocmd!
+--     autocmd BufWritePre * lua vim.lsp.buf.format({async = false, filter = temp})
+--   augroup end
+-- ]]

@@ -6,7 +6,7 @@ return {
   cmd = {
     "Mason", "MasonInstall", "MasonUpdate", "MasonUninstall", "MasonInstallAll",
     "MasonUpdateAll", "MasonUninstallAll", "MasonLog" },
-  event = "BufReadPre",
+  lazy = false,
   dependencies = {
     "neovim/nvim-lspconfig",
     "williamboman/mason-lspconfig.nvim",
