@@ -10,7 +10,6 @@ return {
   dependencies = {
     "neovim/nvim-lspconfig",
     "williamboman/mason-lspconfig.nvim",
-    "jose-elias-alvarez/null-ls.nvim",
   },
   cond = not vim.g.vscode,
   config = function()
