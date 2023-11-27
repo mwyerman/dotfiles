@@ -14,7 +14,6 @@ alias ....="cd ../../.."
 alias cd..="cd .."
 alias cd...="cd ../.."
 alias cd....="cd ../../.."
-
 # reload zshrc
 alias r="source ~/.zshrc"
 
@@ -26,3 +25,6 @@ alias hs="history | grep"
 alias sa="alias | grep"
 
 export EDITOR="nvim"
+
+# firefox bin
+alias firefox="firefox-bin"
