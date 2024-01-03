@@ -9,6 +9,8 @@ return {
   event = "BufRead",
   cond = not vim.g.vscode,
   config = function()
+    require("ts_context_commentstring").setup{}
+    vim.g.skip_ts_context_commentstring_module = true
     require("nvim-treesitter.configs").setup {
       ensure_installed = { "bash", "c", "cpp", "css", "dockerfile", "go", "html", "java", "javascript", "jsdoc", "json",
         "json5", "latex", "llvm", "lua", "make", "python", "rust", "typescript", "verilog", "vim" },
@@ -31,10 +33,6 @@ return {
           scope_incremental = "<s-cr>",
           node_decremental = "<bs>",
         },
-      },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
       },
     }
   end
