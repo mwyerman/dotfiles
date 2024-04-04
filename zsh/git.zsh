@@ -92,6 +92,15 @@ function gg() {
 
 
 # config
+
+# if variables not set, tell user to create secrets.zsh file
+if [ -z "$GIT_NAME" ] || [ -z "$GIT_WORK_EMAIL" ] || [ -z "$GIT_PERSONAL_EMAIL" ]; then
+  echo "Please create a ~/.zsh/secrets.zsh file with the following variables:"
+  echo "export GIT_NAME=\"<your name>\""
+  echo "export GIT_WORK_EMAIL=\"<your work email>\""
+  echo "export GIT_PERSONAL_EMAIL=\"<your personal email>\""
+  return
+fi
 alias gcu="git config user.name '$GIT_NAME'"
 alias gce="git config user.email"
 alias gcew="git config user.email $GIT_WORK_EMAIL"

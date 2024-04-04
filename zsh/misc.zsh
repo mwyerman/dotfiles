@@ -28,3 +28,8 @@ export EDITOR="nvim"
 
 # firefox bin
 alias firefox="firefox-bin"
+alias python="python3"
+
+# fix issues with tmpdir in wsl
+export TMPDIR="/tmp"
+export TMUX_TMPDIR="/tmp"
