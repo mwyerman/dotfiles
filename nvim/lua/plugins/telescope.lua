@@ -30,6 +30,23 @@ return {
   config = function()
     local actions = require("telescope.actions")
 
+    local extensions = {
+      ["ui-select"] = {
+          require("telescope.themes").get_dropdown {
+        }
+      }
+    }
+    local windows = vim.fn.has "win32" == 1
+
+    if not windows then
+      extensions.fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      }
+    end
+
     require("telescope").setup {
       defaults = {
         prompt_prefix = " ",
@@ -94,17 +111,9 @@ return {
       },
     }
 
-    -- if not windows
-    if vim.fn.has "win32" == 0 then
-      extensions.fzf = {
-        fuzzy = true,
-        override_generic_sorter = true,
-        override_file_sorter = true,
-        case_mode = "smart_case",
-      }
+    if not windows then
       require("telescope").load_extension "fzf"
     end
-
     require("telescope").load_extension "ui-select"
   end,
 }
