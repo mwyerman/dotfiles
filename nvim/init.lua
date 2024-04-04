@@ -21,6 +21,10 @@ require("lazy").setup("plugins", {
   }
 })
 
--- vim.cmd("colorscheme catppuccin")
-
 require 'autocommands'
+
+-- if windows, set shell to powershell
+if vim.fn.has('win32') == 1 then
+  vim.o.shell = 'powershell.exe'
+end
+

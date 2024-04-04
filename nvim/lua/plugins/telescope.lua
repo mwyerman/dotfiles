@@ -1,5 +1,7 @@
+-- change build command for windows
 return {
   "nvim-telescope/telescope.nvim",
+  tag = "0.1.6",
   keys = {
     { "<leader>b",  ":Telescope buffers<cr>",                       desc = "buffers" },
     { "<leader>f",  ":Telescope find_files<cr>",                    desc = "files" },
@@ -89,16 +91,20 @@ return {
 
           }
         },
-        ["fzf-native"] = {
-          fuzzy = true,
-          override_generic_sorter = true,
-          override_file_sorter = true,
-          case_mode = "smart_case",
-        },
       },
     }
 
+    -- if not windows
+    if vim.fn.has "win32" == 0 then
+      extensions.fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      }
+      require("telescope").load_extension "fzf"
+    end
+
     require("telescope").load_extension "ui-select"
-    require("telescope").load_extension "fzf"
   end,
 }

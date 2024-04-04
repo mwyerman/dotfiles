@@ -22,21 +22,25 @@ return {
       function(server_name)
         lspconfig[server_name].setup({})
       end,
+
       ["pylsp"] = function()
         lspconfig["pylsp"].setup(
           require("plugins.lsp.pylsp")
         )
       end,
+
       ["pyright"] = function()
         lspconfig["pyright"].setup(
           require("plugins.lsp.pyright")
         )
       end,
+
       ["lua_ls"] = function()
         lspconfig["lua_ls"].setup(
           require("plugins.lsp.lua_ls")
         )
       end,
+
       ["clangd"] = function()
         lspconfig["clangd"].setup(
           require("plugins.lsp.clangd")

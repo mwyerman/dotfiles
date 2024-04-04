@@ -3,6 +3,12 @@ return {
   config = function()
     local opts = {
       filetype = {
+        rust = {
+          require("formatter.filetypes.rust").rustfmt,
+        },
+        c = {
+          require("formatter.filetypes.c").clang_format,
+        },
         lua = {
           require("formatter.filetypes.lua").stylua,
         },

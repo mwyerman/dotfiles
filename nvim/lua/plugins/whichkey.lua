@@ -31,6 +31,8 @@ return {
       -- folders
       l = { name = "+lsp" },
       T = { name = "+terminal" },
+      -- terminal mode
+      t = { "<cmd>term<cr>", "terminal" },
     }
 
     require("which-key").setup(mappings, opts)

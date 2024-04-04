@@ -52,3 +52,7 @@ keymap("v", ">", ">gv", opts)
 
 -- paste without clearing register
 keymap("v", "P", '"_dP', opts)
+
+-- Terminal Mode
+-- exit terminal mode
+keymap("t", "<C-\\>", "<C-\\><C-n>", opts)
