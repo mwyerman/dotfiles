@@ -44,7 +44,8 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-if vim.fn.has("win32") then
+if vim.fn.has("win32") == 1 then
+  -- print to console saying that we are on windows
 	vim.g.terminal_emulator = "pwsh"
 	vim.o.shellxquote = ""
 	vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command "

@@ -1,8 +1,12 @@
-# ls aliases
-alias la="ls -lAFh"
-alias ll="k -h"
-alias lt="ls -lFht"
-alias lsr="ls -lAFhR"
+# if eza installed, use it
+if [ -x "$(command -v eza)" ]; then
+  alias ls="eza"
+  alias la="eza -lA"
+  alias ll="eza -l"
+else
+  alias la="ls -lAFh"
+  alias ll="ls -lh"
+fi
 
 # grep with color
 alias grep="grep --color"
