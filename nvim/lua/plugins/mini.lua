@@ -10,6 +10,7 @@ return {
 		require("mini.splitjoin").setup()
 		require("mini.cursorword").setup()
 		require("mini.jump").setup()
+    require("mini.icons").setup()
 
 		require("mini.move").setup({
 			mappings = {

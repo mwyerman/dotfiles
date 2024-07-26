@@ -1,41 +1,21 @@
 return {
   "folke/which-key.nvim",
   cond = not vim.g.vscode,
-  config = function()
-    local opts = {
-      mode = "n",     -- NORMAL mode
-      prefix = "<leader>",
-      buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-      silent = true,  -- use `silent` when creating keymaps
-      noremap = true, -- use `noremap` when creating keymaps
-      nowait = true,  -- use `nowait` when creating keymaps
+  opts = {
+    spec = {
+      { "<leader>Q", "<cmd>q!<cr>", desc = "quit!", nowait = true, remap = false },
+      { "<leader>T", group = "terminal", nowait = true, remap = false },
+      { "<leader>W", "<cmd>w<cr>", desc = "write", nowait = true, remap = false },
+      { "<leader>h", "<cmd>nohlsearch<cr>", desc = "no highlight", nowait = true, remap = false },
+      { "<leader>l", group = "lsp", nowait = true, remap = false },
+      { "<leader>p", "<cmd>Lazy<cr>", desc = "lazy", nowait = true, remap = false },
+      { "<leader>q", "<cmd>q<cr>", desc = "quit", nowait = true, remap = false },
+      { "<leader>s", "<cmd>split<cr>", desc = "hsplit", nowait = true, remap = false },
+      { "<leader>t", "<cmd>term<cr>", desc = "terminal", nowait = true, remap = false },
+      { "<leader>v", "<cmd>vsplit<cr>", desc = "vsplit", nowait = true, remap = false },
+      { "<leader>w", group = "write", nowait = true, remap = false },
+      { "<leader>wq", "<cmd>wq<cr>", desc = "write and quit", nowait = true, remap = false },
+      { "<leader>ww", "<cmd>w<cr>", desc = "write", nowait = true, remap = false },
     }
-
-    -- plugin specific keymaps are configured in their respective plugin files
-    local mappings = {
-      -- save close and quit commands
-      -- c = { "<cmd>bd<cr>", "close file" },
-      q = { "<cmd>q<cr>", "quit" },
-      Q = { "<cmd>q!<cr>", "quit!" },
-      W = { "<cmd>w<cr>", "write" },
-      h = { "<cmd>nohlsearch<cr>", "no highlight" },
-      w = {
-        name = "+write",
-        w = { "<cmd>w<cr>", "write" },
-        q = { "<cmd>wq<cr>", "write and quit" },
-      },
-      -- misc commands
-      v = { "<cmd>vsplit<cr>", "vsplit" },
-      s = { "<cmd>split<cr>", "hsplit" },
-      p = { "<cmd>Lazy<cr>", "lazy" },
-      -- folders
-      l = { name = "+lsp" },
-      T = { name = "+terminal" },
-      -- terminal mode
-      t = { "<cmd>term<cr>", "terminal" },
-    }
-
-    require("which-key").setup(mappings, opts)
-    require("which-key").register(mappings, opts)
-  end
+  }
 }
