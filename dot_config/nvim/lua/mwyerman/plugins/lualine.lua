@@ -9,5 +9,8 @@ return {
                 },
             },
         },
+        sections = {
+            lualine_c = {}
+        }
     },
 }
