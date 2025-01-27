@@ -89,7 +89,16 @@ return {
 
             local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-            require("fidget").setup({})
+            require("fidget").setup({
+                notification = {
+                    view = {
+                        stack_upwards = false,
+                    },
+                    window = {
+                        align = "top",
+                    },
+                },
+            })
             require("mason").setup()
             require("mason-tool-installer").setup({
                 ensure_installed = ENSURE_INSTALLED,
