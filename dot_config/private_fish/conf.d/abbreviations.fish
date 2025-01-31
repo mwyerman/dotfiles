@@ -10,5 +10,5 @@ abbr --add gd 'git diff'
 abbr --add gp 'git push'
 abbr --add gpl 'git pull'
 abbr --add gf 'git fetch'
-abbr --add gl 'git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short'
+abbr --add gl 'git lg'
 
