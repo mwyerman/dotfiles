@@ -12,3 +12,13 @@ abbr --add gpl 'git pull'
 abbr --add gf 'git fetch'
 abbr --add gl 'git lg'
 
+# alternatives
+if command -q eza
+    abbr l eza 
+    abbr ls eza -l
+    abbr ll eza -la
+else
+    abbr l ls 
+    abbr ls ls -l
+    abbr ll ls -la
+end
