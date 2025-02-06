@@ -17,11 +17,5 @@ return {
                 harpoon:list():select(i)
             end)
         end
-        vim.keymap.set("n", "<C-[>", function()
-            harpoon:list():prev()
-        end)
-        vim.keymap.set("n", "<C-]>", function()
-            harpoon:list():next()
-        end)
     end,
 }
