@@ -14,6 +14,7 @@
     algorithm = histogram
 [alias]
     lg = log --pretty=format:"%C(yellow)%h\\ %Cgreen%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    verify-sync = "!~/.local/scripts/git-verify-sync.sh"
 [url "git@github.com:"]
 	insteadOf = "https://github.com/"
 	insteadOf = "gh:"

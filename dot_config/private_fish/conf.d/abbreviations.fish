@@ -17,8 +17,10 @@ if command -q eza
     abbr l eza 
     abbr ls eza -l
     abbr ll eza -la
+    abbr la eza -la
 else
     abbr l ls 
     abbr ls ls -l
     abbr ll ls -la
+    abbr la ls -la
 end
