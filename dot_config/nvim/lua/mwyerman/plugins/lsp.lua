@@ -62,10 +62,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-            "WhoIsSethDaniel/mason-tool-installer.nvim",
-            "j-hui/fidget.nvim",
+            -- "williamboman/mason.nvim",
+            -- "williamboman/mason-lspconfig.nvim",
+            -- "WhoIsSethDaniel/mason-tool-installer.nvim",
             "saghen/blink.cmp",
         },
 
@@ -89,49 +88,10 @@ return {
 
             local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-            require("fidget").setup({
-                notification = {
-                    view = {
-                        stack_upwards = false,
-                    },
-                    window = {
-                        align = "top",
-                    },
-                },
-            })
-            require("mason").setup()
-            require("mason-tool-installer").setup({
-                ensure_installed = ENSURE_INSTALLED,
-            })
-            require("mason-lspconfig").setup({
-                ensure_installed = {},
-                automatic_installation = false,
-                handlers = {
-                    function(server_name) -- default handler (optional)
-                        require("lspconfig")[server_name].setup({
-                            capabilities = capabilities,
-                        })
-                    end,
-                    rust_analyzer = function()
-                        local lspconfig = require("lspconfig")
-                        lspconfig.rust_analyzer.setup({
-                            capabilities = capabilities,
-                            settings = {
-                                ["rust-analyzer"] = {
-                                    cargo = {
-                                        features = "all",
-                                    },
-                                    inlayHints = {
-                                        enable = true,
-                                    },
-                                },
-                            },
-                        })
-                    end,
-                },
-            })
+            local lspconfig = require("lspconfig")
 
-            -- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+            -- config for neovim development
+            lspconfig.lua_ls.setup {}
 
             for _, method in ipairs({
                 "textDocument/diagnostic",

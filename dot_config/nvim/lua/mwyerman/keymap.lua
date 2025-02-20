@@ -15,13 +15,13 @@ M.setup = function()
         vim.keymap.set("v", lhs, rhs)
     end
 
-    --- netrw
-    -- bindn("<Leader>e", vim.cmd.Ex, "netrw")
-
-    --- terminal
-    bindn("<leader>tt", term.new_term, "terminal")
-    bindn("<leader>tj", term.new_term_hsplit, "terminal down")
-    bindn("<leader>tl", term.new_term_vsplit, "terminal right")
+    --- tabs
+    bindn("<C-w>N", "<cmd>tabnew<cr>", "Create new empty tag")
+    bindn("<C-w>D", "<cmd>tabclose<cr>", "Close the current tag")
+    bindn("<leader>tN", "<cmd>tabnew<cr>", "Create new empty tag")
+    bindn("<leader>tD", "<cmd>tabclose<cr>", "Close the current tag")
+    bindn("<leader>tt", "<cmd>tabn<cr>", "Next tab")
+    bindn("<leader>tT", "<cmd>tabp<cr>", "Prev tab")
 
     --- window controls
     bindn("<leader>wl", "<cmd>vsplit<cr>", "split right")

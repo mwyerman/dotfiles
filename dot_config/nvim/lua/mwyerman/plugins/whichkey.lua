@@ -17,7 +17,7 @@ return {
     config = function()
         local wk = require("which-key")
         wk.add({
-            { "<leader>t", group = "terminal" },
+            -- { "<leader>t", group = "tabs" },
             { "<leader>l", group = "lsp" },
             { "<leader>f", group = "find" },
         })
