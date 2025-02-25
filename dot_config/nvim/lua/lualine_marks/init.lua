@@ -19,6 +19,7 @@ local default_options = {
 ---@param section string name of section tabs component is in
 ---@param is_active boolean
 ---@return string hl name
+--- @private
 local function get_hl(section, is_active)
     local suffix = is_active and highlight.get_mode_suffix() or '_inactive'
     local section_redirects = {
@@ -55,6 +56,7 @@ end
 
 --- Get what side we are on
 --- @return "left" | "right"
+--- @private
 function M:get_side()
     if self.options.self.section < "x" then
         return "left"
@@ -63,19 +65,10 @@ function M:get_side()
     end
 end
 
---- Get the separator
---- @return string
-function M:get_separator()
-    if self:get_side() == "left" then
-        return self.options.component_separators.left
-    else
-        return self.options.component_separators.right
-    end
-end
-
 --- Get active/inactive highights
 --- @param is_active boolean
 --- @return string
+--- @private
 function M:get_hl(is_active)
     return highlight.component_format_highlight(self.highlights[(is_active and 'active' or 'inactive')])
 end
@@ -83,6 +76,7 @@ end
 --- Apply padding to the string
 --- @param text string
 --- @return string
+--- @private
 function M:apply_padding(text)
     if text == nil then
         return ""
@@ -135,7 +129,7 @@ function M:update_status()
 
     local active_buffer = vim.api.nvim_buf_get_name(0)
     local working_dir = vim.fn.getcwd()
-    local separator = self:get_separator()
+    local active_index = 0
 
     ---@type {[integer]: {index: integer, path: string, is_active: boolean }}
     local marks = {}
@@ -149,22 +143,25 @@ function M:update_status()
     local labels = {}
     ---@type 'active' | 'inactive'
     for i, mark in ipairs(marks) do
-        if i > 1 then
-            table.insert(labels, separator)
-        end
-
-        if mark.is_active then
-            table.insert(labels, self:get_hl(true))
-        elseif i == 1 then
-            table.insert(labels, self:get_hl(false))
+        if i == 1 then
+            if mark.is_active then
+                table.insert(labels, self:get_hl(true))
+            else
+                table.insert(labels, self:get_hl(false))
+            end
+        else
+            if mark.is_active then
+                active_index = i
+                table.insert(labels, self:get_hl(true))
+            elseif i + 1 == active_index then
+                table.insert(labels, self:get_hl(false))
+            else
+                table.insert(labels, self:get_hl(false))
+            end
         end
 
         local label = self:apply_padding(mark.index .. ": " .. shorten_path(mark.path))
         table.insert(labels, label)
-
-        if mark.is_active then
-            table.insert(labels, self:get_hl(false))
-        end
     end
 
     local res = table.concat(labels)

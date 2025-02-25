@@ -1,11 +1,7 @@
 return {
-    {
-        "windwp/nvim-autopairs",
-        config = true,
-        opts = { check_ts = true },
-    },
+    { "kkharji/sqlite.lua", priority = 1000 },
     {
         "windwp/nvim-ts-autotag",
         config = true,
-    }
+    },
 }

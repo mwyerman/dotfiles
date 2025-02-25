@@ -27,9 +27,6 @@ M.setup = function()
     bindn("<leader>wl", "<cmd>vsplit<cr>", "split right")
     bindn("<leader>wj", "<cmd>split<cr>", "split down")
 
-    --- move lines up and down when selected, with indent awareness
-    bindv("J", ":m '>+1<cr>gv=gv")
-    bindv("K", ":m '>-2<cr>gv=gv")
 
     --- don't replace yank buffer in visual mode
     bindv("p", [["_dP]])

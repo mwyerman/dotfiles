@@ -77,30 +77,6 @@ local function buffer_count()
     return tostring(count) .. " [" .. tostring(modified_count) .. "]"
 end
 
-local function harpoon_list()
-    local success, harpoon = pcall(require, "harpoon")
-    if not success then
-        return ""
-    end
-
-    local harpoons = {}
-
-    local list = harpoon:list()
-    for i, item in ipairs(list.items) do
-        local path = shorten_path(item.value)
-        path = i .. ": " .. path
-        if item.context.row ~= 1 then
-            path = path .. "[" .. item.context.row
-            if item.context.col ~= 0 then
-                path = path .. ":" .. item.context.col
-            end
-            path = path .. "]"
-        end
-        table.insert(harpoons, path)
-    end
-    return table.concat(harpoons, " ")
-end
-
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -112,8 +88,8 @@ return {
                         "alpha",
                     },
                 },
-                -- component_separators = { left = "|", right = "|" },
-                -- section_separators = { left = "", right = "" },
+                component_separators = { left = "|", right = "|" },
+                section_separators = { left = "", right = "" },
             },
             sections = {
                 lualine_a = { "mode" },
@@ -129,9 +105,7 @@ return {
             },
             tabline = {
                 lualine_a = { buffer_count },
-                -- lualine_b = { harpoon_list },
-                -- lualine_b = { require("harpoon_lualine") },
-                lualine_b = { "buffers" },
+                lualine_b = { require("lualine_marks") },
                 lualine_z = { "tabs" },
             },
         })
