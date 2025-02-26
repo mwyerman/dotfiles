@@ -47,6 +47,11 @@ M.setup = function()
     vim.opt.undodir = undo_dir -- set undo dir
     vim.opt.undofile = true -- enable undo file
     vim.opt.undolevels = 1000 -- undo history to keep
+
+    -- set pwsh as shell on windows
+    if vim.fn.has("windows") then
+        vim.o.shell = "pwsh.exe"
+    end
 end
 
 return M
