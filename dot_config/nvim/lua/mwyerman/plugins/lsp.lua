@@ -79,6 +79,8 @@ return {
             lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.pyright.setup({ capabilities = capabilities })
+            lspconfig.sqlls.setup({ capabilities = capabilities })
+            lspconfig.jsonls.setup({ capabilities = capabilities })
 
             for _, method in ipairs({
                 "textDocument/diagnostic",
