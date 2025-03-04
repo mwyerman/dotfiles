@@ -49,7 +49,7 @@ M.setup = function()
     vim.opt.undolevels = 1000 -- undo history to keep
 
     -- set pwsh as shell on windows
-    if vim.uv.os_uname() == "Windows_NT" then
+    if vim.uv.os_uname().sysname == "Windows_NT" then
         vim.o.shell = "pwsh.exe"
     end
 end
