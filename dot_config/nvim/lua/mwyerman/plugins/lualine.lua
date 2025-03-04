@@ -1,31 +1,3 @@
-function shorten_path(filepath)
-    -- Handle Windows paths by replacing '\' with '/'
-    filepath = filepath:gsub("\\", "/")
-
-    -- Split the filepath into components
-    local components = {}
-    for component in filepath:gmatch("[^/]+") do
-        table.insert(components, component)
-    end
-
-    -- Reduce each component to the first letter
-    for i, component in ipairs(components) do
-        if i == #components then
-            components[i] = component
-        else
-            if component:sub(1, 1) == '.' then
-                -- For dotfiles, keep a second letter
-                components[i] = component:sub(1, 2)
-            else
-                components[i] = component:sub(1, 1)
-            end
-        end
-    end
-
-    -- Rejoin the components back into a shortened path
-    return table.concat(components, "/")
-end
-
 local function lsp_client_count()
     local buf = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients({ bufnr = buf })
@@ -114,7 +86,7 @@ end
 
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" },
     config = function()
         require("lualine").setup({
             options = {
@@ -128,7 +100,7 @@ return {
             },
             sections = {
                 lualine_a = { "mode" },
-                lualine_c = { },
+                lualine_c = { "lsp_progress" },
                 -- lualine_x = { lsp_formatter_info, lsp_client_count },
                 lualine_x = {},
                 lualine_y = { lsp_formatter_info, lsp_client_count, "filetype" },
