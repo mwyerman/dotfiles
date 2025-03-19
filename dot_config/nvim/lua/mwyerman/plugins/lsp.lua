@@ -41,6 +41,7 @@ return {
                 json = { "prettier" },
                 rust = { "rustfmt", lsp_format = "fallback" },
                 python = { "ruff_format" },
+                c = { "clang-format" },
                 ["_"] = { "trim_newlines", "trim_whitespace" },
             },
             default_format_opts = {
@@ -77,6 +78,7 @@ return {
             local lspconfig = require("lspconfig")
 
             lspconfig.lua_ls.setup({ capabilities = capabilities })
+            lspconfig.clangd.setup({ capabilities = capabilities })
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
             lspconfig.pyright.setup({ capabilities = capabilities })
             lspconfig.sqlls.setup({ capabilities = capabilities })
