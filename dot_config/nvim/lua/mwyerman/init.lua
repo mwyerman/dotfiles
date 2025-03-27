@@ -1,4 +1,5 @@
 require("mwyerman.settings").setup()
+require("mwyerman.lsp").setup()
 require("mwyerman.neovide").setup()
 require("mwyerman.keymap").setup()
 require("mwyerman.lazy").setup()

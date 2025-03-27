@@ -10,7 +10,7 @@ local function lsp_client_count()
         end
     end
     if lsp_names == "" then
-        lsp_names = "No Lsp"
+        return ""
     end
     return '  ' ..lsp_names
 end
@@ -101,10 +101,8 @@ return {
             sections = {
                 lualine_a = { "mode" },
                 lualine_c = { "lsp_progress" },
-                -- lualine_x = { lsp_formatter_info, lsp_client_count },
                 lualine_x = {},
                 lualine_y = { lsp_formatter_info, lsp_client_count, "filetype" },
-                -- lualine_y = { "filetype" },
                 lualine_z = { "location" },
             },
             winbar = {

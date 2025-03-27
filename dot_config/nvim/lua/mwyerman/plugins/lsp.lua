@@ -1,15 +1,3 @@
-local function create_lsp_keymaps(event)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover", buffer = event.buf })
-    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "signature help", buffer = event.buf })
-    vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "diagnostics", buffer = event.buf })
-    vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "code actions", buffer = event.buf })
-    vim.keymap.set("v", "ga", vim.lsp.buf.code_action, { desc = "code actions", buffer = event.buf })
-    vim.keymap.set("n", "gR", vim.lsp.buf.rename, { desc = "rename", buffer = event.buf })
-    vim.keymap.set("n", "<leader>lR", "<cmd>LspRestart<cr>", { desc = "restart lsp", buffer = event.buf })
-    vim.keymap.set("n", "<leader>lI", "<cmd>LspInfo<cr>", { desc = "lsp info", buffer = event.buf })
-    vim.keymap.set("n", "<leader>lL", "<cmd>LspLog<cr>", { desc = "lsp log", buffer = event.buf })
-end
-
 return {
     --- nvim development helper
     {
@@ -42,72 +30,11 @@ return {
                 rust = { "rustfmt", lsp_format = "fallback" },
                 python = { "ruff_format" },
                 c = { "clang-format" },
-                ["_"] = { "trim_newlines", "trim_whitespace" },
+                -- ["_"] = { "trim_newlines", "trim_whitespace" },
             },
             default_format_opts = {
                 lsp_format = "fallback",
             },
         },
-    },
-    --- language servers
-    {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            "saghen/blink.cmp",
-        },
-        config = function()
-            --- attach keymaps
-            vim.api.nvim_create_autocmd("LspAttach", {
-                desc = "LSP Keymaps",
-                callback = function(args)
-                    create_lsp_keymaps(args)
-
-                    local client = vim.lsp.get_client_by_id(args.data.client_id)
-                    if
-                        client ~= nil
-                        and client.server_capabilities.inlayHintProvider
-                        and not vim.lsp.inlay_hint.is_enabled()
-                    then
-                        vim.lsp.inlay_hint.enable(true)
-                    end
-                end,
-            })
-
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-            local lspconfig = require("lspconfig")
-
-            lspconfig.lua_ls.setup({ capabilities = capabilities })
-            lspconfig.clangd.setup({ capabilities = capabilities })
-            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-            lspconfig.pyright.setup({ capabilities = capabilities })
-            lspconfig.sqlls.setup({ capabilities = capabilities })
-            lspconfig.jsonls.setup({ capabilities = capabilities })
-
-            for _, method in ipairs({
-                "textDocument/diagnostic",
-                "workspace/diagnostic",
-            }) do
-                local default_diagnostic_handler = vim.lsp.handlers[method]
-                vim.lsp.handlers[method] = function(err, result, context, config)
-                    if err ~= nil and err.code == -32802 then
-                        return
-                    end
-                    return default_diagnostic_handler(err, result, context, config)
-                end
-            end
-
-            vim.diagnostic.config({
-                -- update_in_insert = true,
-                float = {
-                    focusable = false,
-                    style = "minimal",
-                    border = "rounded",
-                    source = true,
-                    header = "",
-                    prefix = "",
-                },
-            })
-        end,
     },
 }

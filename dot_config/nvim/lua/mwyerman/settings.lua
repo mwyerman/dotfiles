@@ -52,6 +52,11 @@ M.setup = function()
     if vim.uv.os_uname().sysname == "Windows_NT" then
         vim.o.shell = "pwsh.exe"
     end
+
+    -- diagnostics
+    vim.diagnostic.config({
+        virtual_lines = {current_line = true},
+    })
 end
 
 return M
