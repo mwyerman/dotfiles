@@ -1,3 +1,5 @@
+---
+---
 ---@type LazySpec
 return {
     {
@@ -25,7 +27,7 @@ return {
             { "<leader>fg", function() Snacks.picker.grep() end,                  desc = "Grep" },
             { "<leader>fb", function() Snacks.picker.buffers() end,               desc = "Buffers" },
             { "<leader>fh", function() Snacks.picker.help() end,                  desc = "Help" },
-            { "<leader>e",  function() Snacks.explorer() end,                     desc = "File Tree" },
+            { "<leader>e",  function() Snacks.explorer({hidden = true, include = { "**/*" }}) end,                     desc = "File Tree" },
             { "<C-\\>",     function() Snacks.terminal.toggle() end,              desc = "Terminal",              mode = { "n", "t" } },
             { "<leader>M",  function() Snacks.notifier.show_history() end,        desc = "Message history" },
             --- LSP Pickers
