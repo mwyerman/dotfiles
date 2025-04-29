@@ -27,6 +27,9 @@ return {
             formatters_by_ft = {
                 lua = { "stylua" },
                 json = { "prettier" },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
+                svelte = { "prettier" },
                 rust = { "rustfmt", lsp_format = "fallback" },
                 python = { "ruff_format" },
                 c = { "clang-format" },

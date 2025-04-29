@@ -38,6 +38,7 @@ M.enable_language_servers = function()
         "rust_analyzer",
         "pyright",
         "jsonls",
+        "svelte",
     })
 end
 

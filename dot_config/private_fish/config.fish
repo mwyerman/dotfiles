@@ -4,4 +4,4 @@ if status is-interactive
     source ~/.config/fish/themes/$shell_theme.fish
 end
 
-set PATH $PATH ~/.local/bin
+set PATH $PATH ~/.local/bin /opt/nvim-linux-x86_64/bin
