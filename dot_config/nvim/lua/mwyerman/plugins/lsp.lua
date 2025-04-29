@@ -33,6 +33,7 @@ return {
                 rust = { "rustfmt", lsp_format = "fallback" },
                 python = { "ruff_format" },
                 c = { "clang-format" },
+                markdown = { "prettier" },
                 -- ["_"] = { "trim_newlines", "trim_whitespace" },
             },
             default_format_opts = {
