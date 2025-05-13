@@ -1,5 +1,3 @@
----
----
 ---@type LazySpec
 return {
     {
@@ -10,7 +8,12 @@ return {
         opts = {
             quickfile = {},
             notifier = {},
-            picker = {},
+            picker = {
+                matcher = {
+                    cwd_bonus = true,
+                    frecency = true,
+                },
+            },
             explorer = {
                 replace_netrw = true,
             },
@@ -23,11 +26,11 @@ return {
             },
         },
         keys = {
-            { "<leader>ff", function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
+            { "<leader>ff", function() Snacks.picker.files() end,                 desc = "Smart Find Files" },
             { "<leader>fg", function() Snacks.picker.grep() end,                  desc = "Grep" },
             { "<leader>fb", function() Snacks.picker.buffers() end,               desc = "Buffers" },
             { "<leader>fh", function() Snacks.picker.help() end,                  desc = "Help" },
-            { "<leader>e",  function() Snacks.explorer({hidden = true, include = { "**/*" }}) end,                     desc = "File Tree" },
+            { "<leader>e",  function() Snacks.explorer() end,                     desc = "File Tree" },
             { "<C-\\>",     function() Snacks.terminal.toggle() end,              desc = "Terminal",              mode = { "n", "t" } },
             { "<leader>M",  function() Snacks.notifier.show_history() end,        desc = "Message history" },
             --- LSP Pickers
