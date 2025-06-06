@@ -43,8 +43,8 @@ M.enable_language_servers = function()
 end
 
 M.setup = function()
-    M.enable_language_servers()
-    M.setup_keymap_autocmd()
+    -- M.enable_language_servers()
+    -- M.setup_keymap_autocmd()
 end
 
 return M

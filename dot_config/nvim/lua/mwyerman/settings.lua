@@ -12,6 +12,13 @@ M.setup = function()
     vim.opt.sidescrolloff = 10 -- keep cursor 10 cols away from edge of screen
     vim.opt.cmdheight = 0 -- hide command line when not in use
     vim.opt.wrap = false -- no word wrap
+    -- vim.o.termguicolors = true
+
+    --- highlight diagnostics
+    -- vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { underline = false, bg = "#ff0000", fg = "#ffffff" })
+    -- vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { bg = "#ff0000", fg = "#ffffff" })
+
+
 
     --- whitespace chars
     vim.opt.list = true -- enable listchars

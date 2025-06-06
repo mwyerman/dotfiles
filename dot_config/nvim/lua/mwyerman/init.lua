@@ -1,9 +1,10 @@
 require("mwyerman.settings").setup()
-require("mwyerman.lsp").setup()
+-- require("mwyerman.lsp").setup()
 require("mwyerman.neovide").setup()
 require("mwyerman.keymap").setup()
 require("mwyerman.lazy").setup()
 require("mwyerman.terminal").setup()
+require("mwyerman.temp").setup()
 
 -- require("nvim-recents").setup()
 -- require("statusline").setup()
